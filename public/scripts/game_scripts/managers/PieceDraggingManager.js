@@ -46,10 +46,11 @@ function mouseMove(e) {
 async function mouseUp(e) {
     document.removeEventListener('mousemove', mouseMove);
     document.removeEventListener('mouseup', mouseUp);
-
+    resetStyles(activePiece);
+    
     const activeParent = activePiece.parentNode;
     const [active_y, active_x] = [activeParent.dataset.y, activeParent.dataset.x].map(Number);
-
+    
     if (activePiece.parentNode === hoveredSquare) {
         resetStyles(activePiece);
         return;
@@ -61,11 +62,8 @@ async function mouseUp(e) {
             hoveredSquare.appendChild(activePiece);
         }
     }
-
-    resetStyles(activePiece);
     toggleShowPossibleMoves(possible_moves, false);
     activePiece = null;
-    
 }
 
 export function mouseEnter(e) {

@@ -57,6 +57,7 @@ function create_piece(piece_type) {
         return piece;
         
     } else if (piece_type === 'k') {
+        piece.classList.add('defender');
         piece.classList.add('king');
         piece.dataset.type = 'king';
         return piece;

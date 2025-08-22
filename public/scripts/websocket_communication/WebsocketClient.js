@@ -66,7 +66,7 @@ export function sendMessage(message) {
 }
 
 export const getClient_id = () => client_id;
-export const getGame_id = () => game_id
+export const getGame_id = () => game_id;
 
 export const setClient_id = (id) => {
      client_id = id;

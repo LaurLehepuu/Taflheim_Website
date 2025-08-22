@@ -10,12 +10,16 @@ messageHandler.on("win", (message) => {
     switch (message.win_reason){
         case 'king_corner_retreat':
             win_reason.textContent = 'The king has escaped to a corner!';
+            break;
         case 'edge_fort_escape':
             win_reason.textContent = "The king is secure in an edge fort!";
+            break;
         case 'king_surrounded':
             win_reason.textContent = "The king has been surrounded!";
+            break;
         case 'defenders_surrounded':
             win_reason.textContent = "The defenders have been surrounded!";
+            break;
     }
 
     gameOverCard.style.display = 'flex'
