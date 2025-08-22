@@ -1,0 +1,97 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+.game-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: #1E1A17;
+}
+
+#game-board {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    background-color: #D5C7AE;
+}
+
+.game-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+/* square related styling */
+
+.blank-square, .restricted-square, .defender-square, .attacker-square, .king-square {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75px;
+    height: 75px;
+    margin: 1px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    user-select: none;;
+}
+
+.blank-square {
+    background-image: url('/assets/dark_board/squares/blank_square.svg');
+}
+
+.defender-square {
+    background-image: url('/assets/dark_board/squares/defender_square.svg');
+}
+
+.attacker-square {
+    background-image: url('/assets/dark_board/squares/attacker_square.svg');
+}
+
+.king-square, .restricted-square {
+    background-image: url('/assets/dark_board/squares/king_square.svg');
+}
+
+/* piece related styling */
+.defender, .attacker, .king {
+    align-items: center;
+    width: 80%;
+    height: 80%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    user-select: none;;
+}
+.defender, .attacker, .king :hover {
+    cursor: grab;
+}
+
+.defender {
+    background-image: url('/assets/dark_board/pieces/defender_piece.svg');
+}
+
+.attacker {
+    background-image: url('/assets/dark_board/pieces/attacker_piece.svg');
+}
+
+.king {
+    background-image: url('/assets/dark_board/pieces/king_piece.svg');
+}
+
+/* For showing possible moves*/
+.possible-move-indicator {
+    position: absolute;
+    width: 30%;
+    height: 30%;
+    background-color: rgb(252, 252, 252);
+    border-radius: 100%;
+    pointer-events: none; /* Prevent interaction with the indicator */
+}

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="180"
+   height="180"
+   viewBox="0 0 180 180"
+   version="1.1"
+   id="svg1"
+   inkscape:export-filename="ründaja.svg"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Kiht 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:#1e1a16;fill-opacity:1;stroke:none;stroke-width:12.8598"
+       d="M 11.581131,0.47547321 C 5.1962261,0.47547321 0,5.6071706 0,11.971698 V 168.58868 C 0,174.67472 4.7547167,179.57887 10.766037,180 H 170.52453 c 4.14339,-0.30565 7.6415,-2.72038 9.47547,-6.2117 V 6.7652837 C 178.06414,3.0430194 174.19246,0.47547321 169.67547,0.47547321 Z"
+       id="path12" />
+  </g>
+</svg>
