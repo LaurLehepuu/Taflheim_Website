@@ -7,11 +7,12 @@ export class PayLoadBuilder {
         };
     }
 
-    static create(client_id, initial_board){
+    static create(client_id, initial_board, length){
         return{
             method: "create",
             client_id,
-            board: initial_board
+            board: initial_board,
+            length
         }
     }
 

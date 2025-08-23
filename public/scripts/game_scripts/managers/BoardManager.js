@@ -17,7 +17,15 @@ export async function attemptToMovePiece(possible_moves, start_pos, end_pos) {
         // Update the game state
         game_state[end_y][end_x] = game_state[start_y][start_x];
         game_state[start_y][start_x] = " ";
-        // Logic to move the piece on the board
+        
+        //visual piece movement for your own client
+        const from_square = document.querySelector(`.square[data-y="${start_y}"][data-x="${start_x}"]`);
+        const to_square = document.querySelector(`.square[data-y="${end_y}"][data-x="${end_x}"]`);
+        const piece = from_square.querySelector(`.piece`);
+        if (piece) {
+            to_square.appendChild(piece);
+        }
+        
         return true;
     } 
     else {

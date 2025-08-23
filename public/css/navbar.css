@@ -1,0 +1,54 @@
+header {
+    width: 100%;
+}
+nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 0.5rem;
+    background-color: #1E1A16;
+    width: 100%;
+    height: 6em;
+}
+
+/* Make sure the nav items don't take up too much space */
+nav ul {
+    display: flex;
+    gap: 1rem;
+    flex-shrink: 1; /* Allow nav items to shrink if needed */
+}
+
+nav button {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-right: 2rem;
+    margin-left: 2em;
+    flex-shrink: 1; 
+    font-size: 20px
+}
+
+nav img {
+    width: 4.5em;
+    height: 4.5em;
+    margin: 2em 2em 2em 2em;
+}
+
+nav ul a {
+    text-decoration: none;
+    color: #D5C7AE;
+    font-size: 30px;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
+nav ul a:hover {
+    color: #AF7F42
+}
+
+nav button{
+    height: 40%;
+    border-radius: 12px;
+
+}
+

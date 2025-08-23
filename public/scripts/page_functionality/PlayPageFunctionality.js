@@ -11,7 +11,7 @@ const game_id_input = document.getElementById('game-id-input');
 // Create game functionality
 create_btn.addEventListener('click', () => {
     console.log('Create Game button clicked');
-    const payload = PayLoadBuilder.create(getClient_id(), game_state)
+    const payload = PayLoadBuilder.create(getClient_id(), game_state, 10);
     sendMessage(payload);
 });
 
