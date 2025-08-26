@@ -1,5 +1,253 @@
-#join-btn, #create-btn {
-    width: 200px;
-    height: 100px;
-    border-radius: 12px;
+/*Overall settings for headers*/
+h1 {
+font-size: clamp(80px, 8vw, 125px);
+margin-top: 0px;
+margin-left: 0px;
+margin-bottom: 12px;
+}
+
+h2 {
+text-align: center;
+padding: clamp(1.5rem, 3vw, 2rem);
+font-size: clamp(1.8rem, 3vw, 2.5rem);
+}
+
+/* Overall layout css */
+.right-side-elements {
+flex: 1;
+}
+
+.left-side-elements {
+flex: 2;
+}
+
+.content-container{
+display: flex;
+flex-direction: row;
+margin: clamp(20px, 2vw, 25px);
+gap: clamp(1.5rem, 2vw, 2rem);
+}
+
+.left-side-elements, .right-side-elements {
+display: flex;
+gap: clamp(1.8rem, 2vw, 2.5rem);
+flex-direction: column;
+}
+
+.main-text-container {
+display: flex;
+flex-direction: column;
+}
+
+.button-cards-container {
+display: flex;
+gap: clamp(1.8rem, 2vw, 2.5rem);
+flex-direction: row;
+flex-wrap: wrap;
+}
+
+#join-card-buttons {
+display: flex;
+width: 100%;
+flex-direction: row;
+gap: clamp(0.8rem, 1vw, 1.25rem);
+justify-content: center;
+}
+
+/* Cards css */
+#join-card, #create-card, #discord-card, #active-rules-card, #recent-rooms-card {
+border: solid clamp(3px, 0.3vw, 5px) #AF7F42;
+border-radius: clamp(12px, 1vw, 15px);
+background-color: #141212;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+padding: clamp(1.5rem, 2vw, 2rem);
+}
+
+#create-card, #join-card {
+flex: 1;
+min-width: clamp(300px, 30vw, 400px);
+min-height: clamp(300px, 25vh, 400px);
+}
+
+
+#discord-card, #recent-rooms-card {
+min-height: clamp(150px, 15vh, 200px);
+}
+
+
+
+/* Card Elements css */
+#create-card > p, #game-id-input {
+margin-top: 12px;
+margin-bottom: 12px;
+font-size: clamp(1.5rem, 2vw, 2rem);
+}
+
+#create-img {
+margin-top: 12px;
+margin-bottom: 12px;
+display: inline-block;
+width: clamp(40px, 4vw, 60px);
+height: clamp(40px, 4vw, 60px);
+--svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M21 11c0 5.55-3.84 10.74-9 12c-5.16-1.26-9-6.45-9-12V5l9-4l9 4zm-9 10c3.75-1 7-5.46 7-9.78V6.3l-7-3.12z'/%3E%3C/svg%3E");
+background-color: currentColor;
+-webkit-mask-image: var(--svg);
+mask-image: var(--svg);
+-webkit-mask-repeat: no-repeat;
+mask-repeat: no-repeat;
+-webkit-mask-size: 100% 100%;
+mask-size: 100% 100%
+}
+
+#join-img {
+display: inline-block;
+width: clamp(40px, 4vw, 60px);
+height: clamp(40px, 4vw, 60px);
+--svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M14 12v.01M3 21h18M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16'/%3E%3C/svg%3E");
+background-color: currentColor;
+-webkit-mask-image: var(--svg);
+mask-image: var(--svg);
+-webkit-mask-repeat: no-repeat;
+mask-repeat: no-repeat;
+-webkit-mask-size: 100% 100%;
+mask-size: 100% 100%;
+}
+
+/* Card contents css */
+#create-img, #join-img {
+color: #D5C7AE;
+margin-top: 12px;
+margin-bottom: 12px;
+}
+
+#create-card > h2,
+#join-card > h2 {
+padding: 0;
+margin: 1rem 0;
+}
+
+#game-id-input {
+background-color: #141212;
+color: #D5C7AE;
+width: 90%;
+padding: clamp(0.8rem, 1vw, 1rem);
+border-radius: clamp(8px, 0.8vw, 10px);
+border: clamp(3px, 0.3vw, 5px) solid #AF7F42;
+font-size: clamp(1.5rem, 1.5vw, 2rem);
+box-sizing: border-box;
+}
+
+#join-btn, #create-btn, #copy-btn, #discord-btn {
+border-radius: clamp(8px, 0.8vw, 10px);
+width: auto;
+min-width: clamp(160px, 18vw, 220px);
+margin-top: 12px;
+margin-bottom: 12px;
+padding: clamp(1rem, 1.2vw, 1.25rem) clamp(1.2rem, 1.5vw, 1.5rem);
+font-size: clamp(1.3rem, 1.4vw, 1.8rem);
+white-space: nowrap;
+overflow: visible;
+text-overflow: initial;
+background-color: #AF7F42;
+color: #141212;
+border: none;
+cursor: pointer;
+}
+
+
+#create-card {
+justify-content: space-between;
+}
+
+#create-btn {
+margin-top: auto;
+}
+
+#copy-btn {
+background-color: #141212;
+border: clamp(3px, 0.3vw, 5px) solid #AF7F42;
+color: #D5C7AE;
+}
+
+/* Seperator css */
+#text-seperator, #button-card-seperator {
+margin-left: 0px;
+margin-top: 0px;
+margin-bottom: clamp(20px, 2vw, 25px);
+color: #AF7F42;
+width: 50%;
+}
+
+#button-card-seperator {
+width: 100%;
+margin-top: clamp(20px, 2vw, 25px);
+margin-bottom: 0px;
+}
+
+#intro-text {
+font-size: clamp(50px, 5vw, 75px);
+margin: clamp(1rem, 1.5vw, 1.25rem) 0;
+line-height: 1.2;
+}
+
+/* Additional universal styles */
+body {
+background-color: #1a1a1a;
+color: #D5C7AE;
+font-family: 'Georgia', serif;
+margin: 0;
+padding: 0;
+}
+
+/* Media Queries for better responsive behavior */
+@media (max-width: 1200px) {
+    .content-container {
+        flex-direction: column;
+    }
+    .right-side-elements {
+        margin-top: 2rem;
+    }
+    /* Reset min-height for mobile layouts */
+    #active-rules-card {
+        min-height: clamp(150px, 15vh, 200px);
+    }
+}
+
+@media (max-width: 768px) {
+    .button-cards-container {
+        flex-direction: column;
+    }
+    #create-card, #join-card {
+        min-width: 100%;
+    }
+    #join-card-buttons {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    #join-card-buttons button {
+        width: 100%;
+    }
+    h1 {
+        text-align: center;
+    }
+    #intro-text {
+        text-align: center;
+    }
+    /* Center separators when text is centered */
+    #text-seperator, #button-card-seperator {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-container {
+        margin: 10px;
+    }
+    #game-id-input {
+        width: 100%;
+    }
 }

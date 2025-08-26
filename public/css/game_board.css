@@ -34,6 +34,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
     width: 75px;
     height: 75px;
     margin: 1px;
@@ -42,6 +43,10 @@ body {
     background-size: contain;
     background-position: center;
     user-select: none;;
+}
+
+.recent-move {
+    border: 2px solid #D5C7AE;
 }
 
 .blank-square {
