@@ -37,11 +37,6 @@ messageHandler.on('move', (message) => {
     timer.switchPlayer()
 })
 
-messageHandler.on('sync', (message) => {
-    timer.syncWithServer(message.timers)
-    timer.switchPlayer()
-})
-
 //On Game end
 messageHandler.on('win', () =>{
     timer.stop()

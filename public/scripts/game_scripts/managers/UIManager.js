@@ -3,15 +3,15 @@ import { getClient_id } from "../../websocket_communication/WebsocketClient.js";
 import { Timer } from "../utils/Timer.js";
 //Html Elements
     //Game over
-const gameOverCard = document.getElementById('game-over-reason-card');
-const winnerText = document.getElementById('winner-text');
-const win_reason = document.getElementById('win-reason-text');
+    const gameOverCard = document.getElementById('game-over-reason-card');
+    const winnerText = document.getElementById('winner-text');
+    const win_reason = document.getElementById('win-reason-text');
     //Cards
-const opponent_card = document.querySelector(".opponent-card");
-const player_card = document.querySelector(".player-card")
+    const opponent_card = document.querySelector(".opponent-card");
+    const player_card = document.querySelector(".player-card")
     //Timers
-const player_timer = player_card.querySelector(".card-timer > .timer")
-const opponent_timer = opponent_card.querySelector(".card-timer > .timer")
+    const player_timer = player_card.querySelector(".card-timer > .timer")
+    const opponent_timer = opponent_card.querySelector(".card-timer > .timer")
 
 //Other variables
 export const timer = new Timer();
