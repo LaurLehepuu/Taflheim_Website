@@ -9,13 +9,54 @@
 </head>
 <body>
     <%- include('templates/navbar') %>
-
-    <h1>Play</h1>
-    <p>Find games to play here.</p>
-    <button type="button" id="create-btn">Create Game</button>
-    <button type="button" id="join-btn">Join Game</button>
-    <input type="text" id="game-id-input" placeholder="Enter Game ID">
-    <!-- Make a settings section with big buttons -->
+    <div class="content-container">
+        <!-- Left Side -->
+        <div class="left-side-elements">
+            <div class="main-text-container">
+                <h1 class="title">Play</h1>
+                <hr id="text-seperator">
+                <p id="intro-text">Create a game, share the link on Discord, and battle an opponent</p>
+                <button id="discord-btn">Join Our Discord</button>
+        </div>
+        
+        <div class="button-cards-container">
+            <div id="create-card">
+                <div id="create-img"></div>
+                <h2>Create game</h2>
+                <p>Create a game to start playing</p>
+                <button id="create-btn">Create</button>
+            </div>
+            
+            <div id="join-card">
+                <div id="join-img"></div>
+                <h2>Join Game</h2>
+                <input type="text" id="game-id-input" placeholder="c30a9dfd-c0b9-4803-9a47-6683068" />
+                <div id="join-card-buttons">
+                    <button id="join-btn">Join</button>
+                    <button id="copy-btn">Copy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Right Side -->
+    <div class="right-side-elements">
+        <div id="discord-card">
+            <h2>Find opponents on Discord</h2>
+            <button id="discord-btn">Join the Server</button>
+        </div>
+        
+        <div id="recent-rooms-card">
+            <h2>Recent rooms are coming soon</h2>
+        </div>
+        
+        <div id="active-rules-card">
+            <h2>Active Ruleset: Hnefatafl Copenhagen <br> <br>
+                More Rulesets will be added with time
+            </h2>
+        </div>
+    </div>
+</div>
 </body>
 <script src="/scripts/page_functionality/PlayPageFunctionality.js" type="module" ></script>
 </html>

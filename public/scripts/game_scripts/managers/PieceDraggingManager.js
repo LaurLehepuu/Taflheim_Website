@@ -51,15 +51,17 @@ async function mouseUp(e) {
     const activeParent = activePiece.parentNode;
     const [active_y, active_x] = [activeParent.dataset.y, activeParent.dataset.x].map(Number);
     
-    if (activePiece.parentNode === hoveredSquare) {
+    if (activeParent === hoveredSquare) {
         resetStyles(activePiece);
         return;
         
     }
-    if (activePiece && hoveredSquare !== activePiece.parentNode && hoveredSquare) {
+    if (activePiece && hoveredSquare !== activeParent && hoveredSquare) {
         if (await attemptToMovePiece(possible_moves, [active_y, active_x].map(Number), [hoveredSquare.dataset.y, hoveredSquare.dataset.x].map(Number))) {
             console.log('Piece moved to:', hoveredSquare);
             hoveredSquare.appendChild(activePiece);
+            activeParent.classList.add("recent-move")
+            hoveredSquare.classList.add("recent-move")
         }
     }
     toggleShowPossibleMoves(possible_moves, false);
