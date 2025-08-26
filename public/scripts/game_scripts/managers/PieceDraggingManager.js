@@ -60,8 +60,6 @@ async function mouseUp(e) {
         if (await attemptToMovePiece(possible_moves, [active_y, active_x].map(Number), [hoveredSquare.dataset.y, hoveredSquare.dataset.x].map(Number))) {
             console.log('Piece moved to:', hoveredSquare);
             hoveredSquare.appendChild(activePiece);
-            activeParent.classList.add("recent-move")
-            hoveredSquare.classList.add("recent-move")
         }
     }
     toggleShowPossibleMoves(possible_moves, false);

@@ -122,8 +122,8 @@
 }
 
 
-.player-card.turn-active > .card-info,
-.opponent-card.turn-active > .card-info {
+.player-card.turn-active > .card-info > h2,
+.opponent-card.turn-active > .card-info > h2 {
     color: #1E1A17;
 }
 

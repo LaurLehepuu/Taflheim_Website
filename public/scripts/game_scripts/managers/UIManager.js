@@ -18,9 +18,6 @@ export const timer = new Timer();
 let role;
 const client_id = getClient_id()
 
-messageHandler.on("sync", () => {
-    changeTurn();
-})
 messageHandler.on("move", () => {
     changeTurn();
 });

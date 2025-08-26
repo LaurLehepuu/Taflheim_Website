@@ -9,46 +9,19 @@ export var game_state = Hnefatafl_11x11.map(row => row.map(tile => tile === 'r' 
 
 
 export async function attemptToMovePiece(possible_moves, start_pos, end_pos) {
-    let is_valid = await isValidMove(possible_moves, start_pos, end_pos)
-    if (is_valid) {
+    // Just send the server your move and if all is well it will send back a sync message and move the piece
         const [start_y, start_x] = start_pos;
         const [end_y, end_x] = end_pos;
-
-        // Update the game state
-        game_state[end_y][end_x] = game_state[start_y][start_x];
-        game_state[start_y][start_x] = " ";
-        
-        //visual piece movement for your own client
-        const from_square = document.querySelector(`.square[data-y="${start_y}"][data-x="${start_x}"]`);
-        const to_square = document.querySelector(`.square[data-y="${end_y}"][data-x="${end_x}"]`);
-        const piece = from_square.querySelector(`.piece`);
-        if (piece) {
-            to_square.appendChild(piece);
+        const isValidMove = possible_moves.some(move => 
+        move[0] === end_pos[0] && move[1] === end_pos[1]
+        );
+        console.log(isValidMove)
+        if (!isValidMove) {
+            return
         }
-        
-        return true;
-    } 
-    else {
-        return false;
-    }
-}
 
-function isValidMove(possible_moves, start_pos, end_pos) {
-    const valid_move = possible_moves.some(([y, x]) => y === end_pos[0] && x === end_pos[1]);
-
-    if (!valid_move) {
-        console.log(`Invalid move attempted from ${start_pos} to ${end_pos}`);
-        return Promise.resolve(false);
-    }
-
-    const payload = PayLoadBuilder.move(getClient_id(), getGame_id(), start_pos, end_pos)
-    sendMessage(payload);
-
-    return new Promise((resolve) => {
-        messageHandler.once('move', (message) => {
-            resolve(message.correct || false);
-        });
-    });
+        const move_payload = PayLoadBuilder.move(getClient_id(), getGame_id(), start_pos, end_pos)
+        sendMessage(move_payload)
 }
 
 //Contains the most basic logic for moving pieces, to prevent unnecessary server requests and to display possible moves
@@ -108,8 +81,8 @@ function checkDirection(start_pos, dy, dx, possible_moves, moving_piece_type) {
     }
 }
 
-//Update game_state on sync message (need to add actual update too)
-messageHandler.on('sync', (message) => {
+//Update game_state on sync message
+messageHandler.on('move', (message) => {
     const [to_y, to_x] = message.move_to
     const [from_y, from_x] = message.move_from
 
