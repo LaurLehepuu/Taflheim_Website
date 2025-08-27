@@ -45,9 +45,6 @@ body {
     user-select: none;;
 }
 
-.recent-move {
-    border: 2px solid #D5C7AE;
-}
 
 .blank-square {
     background-image: url('/assets/dark_board/squares/blank_square.svg');
@@ -63,6 +60,10 @@ body {
 
 .king-square, .restricted-square {
     background-image: url('/assets/dark_board/squares/king_square.svg');
+}
+
+.previous-move {
+    border: 2px solid #00A676;
 }
 
 /* piece related styling */

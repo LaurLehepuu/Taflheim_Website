@@ -18,8 +18,9 @@ export const timer = new Timer();
 let role;
 const client_id = getClient_id()
 
-messageHandler.on("move", () => {
+messageHandler.on("move", (message) => {
     changeTurn();
+    showPreviousMove(message.move_from, message.move_to);
 });
 
 
@@ -75,7 +76,6 @@ messageHandler.on("win", (message) => {
                 
                 
 function changeTurn() {
-    console.log(player_card, opponent_card)
     if (player_card.classList.contains('turn-active')) {
         player_card.classList.remove('turn-active')
         opponent_card.classList.add('turn-active')
@@ -93,6 +93,25 @@ function updateUITimers(times) {
         opponent_timer.textContent = times.attacker
         player_timer.textContent = times.defender
     }
+}
+
+function showPreviousMove(move_from, move_to) {
+    const [from_y, from_x] = move_from
+    const [to_y, to_x] = move_to
+
+    const shown_moves = document.querySelectorAll('.previous-move');
+    console.log(shown_moves)
+    if (shown_moves) {
+        shown_moves.forEach(element => {
+            element.classList.remove('previous-move')    
+        });
+    }
+
+    //Find squares and add class to them
+    const from_square = document.querySelector(`.square[data-y='${from_y}'][data-x='${from_x}']`)
+    const to_square = document.querySelector(`.square[data-y='${to_y}'][data-x='${to_x}']`)
+    from_square.classList.add('previous-move')
+    to_square.classList.add('previous-move')
 }
 
 function capitalize(s)

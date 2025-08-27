@@ -20,7 +20,7 @@ export class PayLoadBuilder {
         return {
             method: "join",
             client_id,
-            game_id
+            game_id,
         }
     }
 

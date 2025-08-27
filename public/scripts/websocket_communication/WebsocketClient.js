@@ -33,7 +33,7 @@ ws.addEventListener('message', (event) => {
 
 //incase resume request fails, automatically call a new_connection request
 messageHandler.on('error', message => {
-    if (message.type == "resume"){
+    if (message.error_type == "resume"){
         ws.send(JSON.stringify({method:"new_connection"}))
     }
     return
