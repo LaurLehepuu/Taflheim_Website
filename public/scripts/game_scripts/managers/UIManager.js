@@ -69,6 +69,9 @@ messageHandler.on("win", (message) => {
     case 'attacker_timeout':
         win_reason.textContent = "The attackers ran out of time"
         break;
+    case 'opponent_disconnect':
+        win_reason.textContent = "The opponent has disconnected"
+        break;
     }
     
     gameOverCard.style.display = 'flex'
