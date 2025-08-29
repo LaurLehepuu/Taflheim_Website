@@ -91,13 +91,15 @@ export async function onClick(e) {
 
     // Only move if the target is a square and not the piece itself
     if (activePiece && targetSquare !== activePiece.parentNode && targetSquare.classList.contains('square')) {
-        if (await attemptToMovePiece(possible_moves, [active_y, active_x].map(Number), [target_y, target_x].map(Number))) {
-            targetSquare.appendChild(activePiece);
+        try {
+            await attemptToMovePiece(possible_moves, [active_y, active_x].map(Number), [target_y, target_x].map(Number));
+            // Move was successful
             resetStyles(activePiece);
             activePiece = null;
             toggleShowPossibleMoves(possible_moves, false);
-        } 
-        else console.log(`Invalid move from [${active_y}, ${active_x}] to [${target_y}, ${target_x}]`);
+        } catch (error) {
+            console.log(error.message);
+        }
     }
 }
 

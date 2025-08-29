@@ -17,12 +17,12 @@ export async function attemptToMovePiece(possible_moves, start_pos, end_pos) {
         );
         console.log(isValidMove)
         if (!isValidMove) {
-            return false
+            throw new Error(`invalid move from [${start_pos}] to [${end_pos}]`)
         }
         
         const move_payload = PayLoadBuilder.move(getClient_id(), getGame_id(), start_pos, end_pos)
         sendMessage(move_payload)
-        return true
+        return Promise.resolve()
 }
 
 //Contains the most basic logic for moving pieces, to prevent unnecessary server requests and to display possible moves
