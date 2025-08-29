@@ -99,19 +99,22 @@ function showPreviousMove(move_from, move_to) {
     const [from_y, from_x] = move_from
     const [to_y, to_x] = move_to
 
-    const shown_moves = document.querySelectorAll('.previous-move');
+    const shown_moves = document.querySelectorAll('.recent-move');
     console.log(shown_moves)
     if (shown_moves) {
         shown_moves.forEach(element => {
-            element.classList.remove('previous-move')    
+            element.remove()   
         });
     }
 
-    //Find squares and add class to them
+    const recent_move_indicator = document.createElement('div')
+    recent_move_indicator.classList.add('recent-move')
+
+    //Find squares and add element to them
     const from_square = document.querySelector(`.square[data-y='${from_y}'][data-x='${from_x}']`)
     const to_square = document.querySelector(`.square[data-y='${to_y}'][data-x='${to_x}']`)
-    from_square.classList.add('previous-move')
-    to_square.classList.add('previous-move')
+    to_square.appendChild(recent_move_indicator)
+    from_square.appendChild(recent_move_indicator.cloneNode())
 }
 
 function capitalize(s)
