@@ -88,6 +88,7 @@ export async function onClick(e) {
     const activeParent = activePiece ? activePiece.parentNode : null;
     const [active_y, active_x] = [activeParent.dataset.y, activeParent.dataset.x];
     const [target_y, target_x] = [targetSquare.dataset.y, targetSquare.dataset.x];
+
     // Only move if the target is a square and not the piece itself
     if (activePiece && targetSquare !== activePiece.parentNode && targetSquare.classList.contains('square')) {
         if (await attemptToMovePiece(possible_moves, [active_y, active_x].map(Number), [target_y, target_x].map(Number))) {
