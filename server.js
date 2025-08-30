@@ -10,6 +10,12 @@ app.get('/', (req, res) => {
     res.render('index');
 })
 
+const loginRouter = require('./routes/login');
+app.use('/login', loginRouter);
+
+const registerRouter = require('./routes/register');
+app.use('/register', registerRouter)
+
 const aboutRouter = require('./routes/about');
 app.use('/about', aboutRouter);
 

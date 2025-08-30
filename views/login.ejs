@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create an account</title>
+    <link rel="stylesheet" href="/css/universal.css">
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+    <header>
+        <img src="/assets/logo.svg" alt="">
+        <h1>Taflheim</h1>
+    </header>
+    <form action="/login", method="post">
+        <h2>Enter your Email and Password</h2>
+        <div class="input-container">
+            <i class="mail-icon"></i>
+            <input type="text" name="email" id="email" placeholder="Email">
+        </div>
+        <div class="input-container">
+            <i class="lock-icon"></i>
+            <input type="password" name="password" id="password" placeholder="Password">
+        </div>
+        <button type="submit">Log in</button>
+        <a href="/register">Sign up</a>
+    </form>
+</body>
+</html>
