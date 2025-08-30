@@ -13,13 +13,9 @@ router.post('/', async (req, res) => {
         const { email, password, username } = req.body;
         const step = parseInt(req.body.step) || 1;
         
-        console.log('Registration POST triggered:', { email, username, step });
-        
         // STEP 1: Check if email is already in use
         if (step == 1) {
-            console.log('Processing step 1 - checking email');
             const emailExists = await loginDb.checkEmailExists(email);
-            console.log('Email exists check result:', emailExists);
             
             if (emailExists) {
                 return res.render("register", {
@@ -31,7 +27,6 @@ router.post('/', async (req, res) => {
             }
             
             // Email is available, move to step 2
-            console.log('Email available, moving to step 2');
             return res.render("register", {
                 step: 2,
                 error: null,
@@ -42,12 +37,9 @@ router.post('/', async (req, res) => {
         
         // STEP 2: Check username and create user
         if (step == 2) {
-            console.log('Processing step 2 - checking username and creating user');
             
             // Double-check email again
-            console.log('Double-checking email:', email);
             const emailExists = await loginDb.checkEmailExists(email);
-            console.log('Email exists on step 2:', emailExists);
             
             if (emailExists) {
                 return res.render("register", {
@@ -59,9 +51,7 @@ router.post('/', async (req, res) => {
             }
             
             // Check if username is in use
-            console.log('Checking username:', username);
             const usernameExists = await loginDb.checkUsernameExists(username);
-            console.log('Username exists check result:', usernameExists);
             
             if (usernameExists) {
                 return res.render("register", {
@@ -73,22 +63,15 @@ router.post('/', async (req, res) => {
             }
             
             // If all is good, hash password and add person to database
-            console.log('All validation passed - creating user');
-            console.log('Hashing password...');
             const hashedPassword = await bcrypt.hash(password, 10);
-            console.log('Password hashed successfully');
             
-            console.log('Creating user with profile...');
             await loginDb.createUserWithProfile(email, hashedPassword, username);
-            console.log('User created successfully!');
             
             // Success! Redirect to login with success message
-            console.log('Redirecting to login...');
             return res.redirect('/login?register=success');
         }
         
         // If we get here, something unexpected happened
-        console.log('Unexpected step value:', step);
         return res.render("register", {
             step: 1,
             error: "Invalid step. Please start over.",

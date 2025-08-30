@@ -14,6 +14,7 @@
     </header>
     
     <form action="/register" method="post">
+
         <!-- Hidden field to track step -->
         <input type="hidden" name="step" value="<%= typeof step !== 'undefined' ? step : 1 %>">
         
@@ -31,6 +32,7 @@
         <!-- Step 2: Username and Password -->
         <% if (typeof step !== 'undefined' && step == 2) { %>
             <h2>Choose Username and Password</h2>
+
             <!-- Hidden email field to preserve it -->
             <input type="hidden" name="email" value="<%= email %>">
             
@@ -45,15 +47,13 @@
             </div>
             <button type="submit">Create Account</button>
         <% } %>
+        <a href="/login">Back to Login Page</a>
         
         <!-- Error display -->
-        <% if (typeof error !== 'undefined' && error) { %>
-            <div class="error-message" style="color: red; margin-top: 10px;">
-                <%= error %>
-            </div>
+        <% if (error) { %>
+                <h2 class="error-message"><%= error %></h2>
         <% } %>
         
-        <a href="/login">Back to Login Page</a>
     </form>
 </body>
 </html>

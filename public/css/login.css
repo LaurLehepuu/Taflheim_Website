@@ -79,6 +79,10 @@ input::placeholder {
   color: #888;
 }
 
+.error-message {
+    color: #C83E4D;
+}
+
 /* Icons */
 .mail-icon {
   color: #D5C7AE;
