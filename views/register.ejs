@@ -12,21 +12,47 @@
         <img src="/assets/logo.svg" alt="">
         <h1>Taflheim</h1>
     </header>
-    <form action="/register", method="post">
-        <h2>Enter your Email, Username and Password to create an account</h2>
-        <div class="input-container">
-            <i class="person-icon"></i>
-            <input type="text" name="username" id="username" placeholder="Username">
-        </div>
-        <div class="input-container">
-            <i class="mail-icon"></i>
-            <input type="email" name="email" id="email" placeholder="Email">
-        </div>
-        <div class="input-container">
-            <i class="lock-icon"></i>
-            <input type="password" name="email" id="password" placeholder="Password">
-        </div>
-        <button type="submit">Register</button>
+    
+    <form action="/register" method="post">
+        <!-- Hidden field to track step -->
+        <input type="hidden" name="step" value="<%= typeof step !== 'undefined' ? step : 1 %>">
+        
+        <!-- Step 1: Email only -->
+        <% if (typeof step === 'undefined' || step == 1) { %>
+            <h2>Enter your Email</h2>
+            <div class="input-container">
+                <i class="mail-icon"></i>
+                <input type="email" name="email" id="email" placeholder="Email" 
+                       value="<%= typeof email !== 'undefined' ? email : '' %>" required>
+            </div>
+            <button type="submit">Continue</button>
+        <% } %>
+        
+        <!-- Step 2: Username and Password -->
+        <% if (typeof step !== 'undefined' && step == 2) { %>
+            <h2>Choose Username and Password</h2>
+            <!-- Hidden email field to preserve it -->
+            <input type="hidden" name="email" value="<%= email %>">
+            
+            <div class="input-container">
+                <i class="person-icon"></i>
+                <input type="text" name="username" id="username" placeholder="Username"
+                       value="<%= typeof username !== 'undefined' ? username : '' %>" required>
+            </div>
+            <div class="input-container">
+                <i class="lock-icon"></i>
+                <input type="password" name="password" id="password" placeholder="Password" required>
+            </div>
+            <button type="submit">Create Account</button>
+        <% } %>
+        
+        <!-- Error display -->
+        <% if (typeof error !== 'undefined' && error) { %>
+            <div class="error-message" style="color: red; margin-top: 10px;">
+                <%= error %>
+            </div>
+        <% } %>
+        
         <a href="/login">Back to Login Page</a>
     </form>
 </body>
