@@ -13,7 +13,11 @@
         <!-- Left Side -->
         <div class="left-side-elements">
             <div class="main-text-container">
-                <h1 class="title">Play</h1>
+                <% if (!name) { %>
+                    <h1 class="title">Play</h1>
+                <% } else { %>
+                    <h1 class="title">Let's Play <%= name %></h1>
+                <% } %>
                 <hr id="text-seperator">
                 <p id="intro-text">Create a game, share the link on Discord, and battle an opponent</p>
                 <button id="discord-btn" style="width: 40%;">Join Our Discord</button>

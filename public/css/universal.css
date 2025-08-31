@@ -11,4 +11,23 @@ h1, h2, p {
 button {
     background-color: #AF7F42;
     border: 0 solid;
+    border-radius: clamp(8px, 0.8vw, 10px);
+
+}
+
+input {
+    color: #D5C7AE;
+    background-color: #141212;
+    box-sizing: border-box;
+    border: none;
+}
+
+label {
+    color: #D5C7AE;
+    font-size: larger;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
 }

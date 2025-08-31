@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create an account</title>
+    <link rel="stylesheet" href="/css/universal.css">
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+    <header>
+        <img src="/assets/logo.svg" alt="">
+        <h1>Taflheim</h1>
+    </header>
+    
+    <form action="/register" method="post">
+
+        <!-- Hidden field to track step -->
+        <input type="hidden" name="step" value="<%= typeof step !== 'undefined' ? step : 1 %>">
+        
+        <!-- Step 1: Email only -->
+        <% if (typeof step === 'undefined' || step == 1) { %>
+            <h2>Enter your Email</h2>
+            <div class="input-container">
+                <i class="mail-icon"></i>
+                <input type="email" name="email" id="email" placeholder="Email" 
+                       value="<%= typeof email !== 'undefined' ? email : '' %>" required>
+            </div>
+            <button type="submit">Continue</button>
+        <% } %>
+        
+        <!-- Step 2: Username and Password -->
+        <% if (typeof step !== 'undefined' && step == 2) { %>
+            <h2>Choose Username and Password</h2>
+
+            <!-- Hidden email field to preserve it -->
+            <input type="hidden" name="email" value="<%= email %>">
+            
+            <div class="input-container">
+                <i class="person-icon"></i>
+                <input type="text" name="username" id="username" placeholder="Username"
+                       value="<%= typeof username !== 'undefined' ? username : '' %>" required>
+            </div>
+            <div class="input-container">
+                <i class="lock-icon"></i>
+                <input type="password" name="password" id="password" placeholder="Password" required>
+            </div>
+            <button type="submit">Create Account</button>
+        <% } %>
+        <a href="/login">Back to Login Page</a>
+        
+        <!-- Error display -->
+        <% if (error) { %>
+                <h2 class="error-message"><%= error %></h2>
+        <% } %>
+        
+    </form>
+</body>
+</html>
