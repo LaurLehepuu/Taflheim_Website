@@ -141,7 +141,6 @@ box-sizing: border-box;
 }
 
 #join-btn, #create-btn, #copy-btn, #discord-btn {
-border-radius: clamp(8px, 0.8vw, 10px);
 width: auto;
 min-width: clamp(160px, 18vw, 220px);
 margin-top: 12px;

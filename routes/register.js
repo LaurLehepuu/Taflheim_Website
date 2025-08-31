@@ -2,13 +2,20 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const router = express.Router();
 const loginDb = require('../db/login_database')
+const middlewares = require('../middleware')
+
 router.use(express.urlencoded({ extended: false }))
 
-router.get('/', (req, res) => {
-    res.render("register");
+router.get('/', middlewares.checkNotAuthenticated, (req, res) => {
+    res.render("register" ,{
+        step: 1,
+        error: null,
+        email: '',
+        username: ''
+    });
 })
 
-router.post('/', async (req, res) => {
+router.post('/', middlewares.checkNotAuthenticated, async (req, res) => {
     try {
         const { email, password, username } = req.body;
         const step = parseInt(req.body.step) || 1;

@@ -60,16 +60,35 @@ class LoginDatabase {
         }
     }
 
-    //Returns the user from user_profiles
+    //Returns the user from user_profiles via id
     async getUserProfile(user_id) {
         const [rows] = await this.pool.query(`
             SELECT *
             FROM user_profiles
             WHERE user_id = ?
             `, [user_id])
-
-            return rows[0]
+            return rows[0] || null
     }
+
+    //Returns the user object by Email
+    async getUserByEmail(email) {
+        const [rows] = await this.pool.query(`
+            SELECT *
+            FROM user_login_info
+            WHERE email = ?
+            `, [email])
+        return rows[0] || null
+    }
+    //Returns the user via id FROM user_profiles
+    async getUserById(id) {
+        const [rows] = await this.pool.query(`
+            SELECT *
+            FROM user_profiles
+            WHERE user_id = ?
+            `, [id])
+        return rows[0] || null
+    }
+
 }
 
 module.exports = new LoginDatabase();
