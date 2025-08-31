@@ -15,4 +15,6 @@ router.post('/', middlewares.checkNotAuthenticated, passport.authenticate('local
     failureFlash: true
 }))
 
+
+
 module.exports = router;
