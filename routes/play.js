@@ -8,7 +8,7 @@ router.get('/', middlewares.checkAuthenticated, (req, res) => {
     res.render("play", { name: username, player_id: player_id });
 })
 
-router.get('/game', (req, res) => {
+router.get('/game', middlewares.checkAuthenticated, (req, res) => {
     const username = req.user.username || "Player Name"
     const current_rating = req.user.current_rating || "NaN"
     res.render("game", {name: username, current_rating: current_rating});

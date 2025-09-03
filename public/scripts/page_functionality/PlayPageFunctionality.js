@@ -40,6 +40,5 @@ join_btn.addEventListener('click', () => {
 messageHandler.on('join', (message) => {
     console.log(`Recieved message: ${message}`)
     setGame_id(message.game.id);
-    console.log('New player joined the game:', message.new_client);
     window.location.replace('http://localhost:3000/play/game')
 });

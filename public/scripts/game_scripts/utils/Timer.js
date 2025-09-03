@@ -19,7 +19,7 @@ export class Timer {
     this.defender_time = serverTimes.defender;
     this.attacker_time = serverTimes.attacker;
     this.active_side = serverTimes.active_side;
-    console.log('Timer initialized:', this.getTimes());
+    //console.log('Timer initialized:', this.getTimes());
   }
 
   // Sync with server times (called when receiving server updates)
