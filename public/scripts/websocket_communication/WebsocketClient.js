@@ -2,23 +2,19 @@
 import { PayLoadBuilder } from './PayLoadBuilder.js';
 
 const ws = new WebSocket('ws://localhost:8080');
-let client_id = localStorage.getItem("client_id") || '';
+let player_id = window.PLAYER_ID || localStorage.getItem("player_id") || null
 let game_id = localStorage.getItem("game_id") || '';
 
 //When connecting, check if there already was a connection
 ws.addEventListener('open', () => {
+    //Try to resume session
     console.log('WebSocket connection established');
-    if (client_id) {
         const resume_PayLoad = {
             method: 'resume',
-            client_id,
+            client_id: player_id,
             game_id,
         }
-
         ws.send(JSON.stringify(resume_PayLoad))
-    } else {
-        ws.send(JSON.stringify({method: 'new_connection'}))
-    }
 })
 
 ws.addEventListener('close', () => console.log('WebSocket connection closed'));
@@ -34,21 +30,24 @@ ws.addEventListener('message', (event) => {
 //incase resume request fails, automatically call a new_connection request
 messageHandler.on('error', message => {
     if (message.error_type == "resume"){
-        ws.send(JSON.stringify({method:"new_connection"}))
+         const new_connection_payload = {
+            method: 'new_connection',
+            client_id: player_id
+        }
+        ws.send(JSON.stringify(new_connection_payload))
     }
     return
 })
 
-//Set client_id and game_id on connect
+//Set player_id and game_id on connect
 messageHandler.on('connect', (message) => {
-    setClient_id(message.client_id);
     if (message.game_id) {
         setGame_id(message.game_id);
     }
 
     //Send a ready message to the server if client has a game and client id
-    if (game_id && client_id) {
-    const payload = PayLoadBuilder.ready(client_id, game_id)
+    if (game_id && player_id && window.location.pathname == '/play/game') {
+    const payload = PayLoadBuilder.ready(player_id, game_id)
     sendMessage(payload)
     }
     return
@@ -65,13 +64,13 @@ export function sendMessage(message) {
     }
 }
 
-export const getClient_id = () => client_id;
-export const getGame_id = () => game_id;
-
-export const setClient_id = (id) => {
-     client_id = id;
-     localStorage.setItem("client_id", id)
+//if There was a played_id in the window. store it
+if (player_id) {
+    localStorage.setItem("player_id", player_id)
 }
+
+export const getPlayer_id = () => player_id;
+export const getGame_id = () => game_id;
 
 export const setGame_id = (id) => {
     game_id = id;

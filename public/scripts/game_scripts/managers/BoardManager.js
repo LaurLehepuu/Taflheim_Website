@@ -1,4 +1,4 @@
-import { getClient_id, getGame_id, sendMessage } from "../../websocket_communication/WebsocketClient.js";
+import { getPlayer_id, getGame_id, sendMessage } from "../../websocket_communication/WebsocketClient.js";
 import { messageHandler } from "../../websocket_communication/GameMessageHandler.js";
 import { Hnefatafl_11x11 } from "../utils/Boards.js";
 import { PayLoadBuilder } from "../../websocket_communication/PayLoadBuilder.js";
@@ -20,7 +20,7 @@ export async function attemptToMovePiece(possible_moves, start_pos, end_pos) {
             throw new Error(`invalid move from [${start_pos}] to [${end_pos}]`)
         }
         
-        const move_payload = PayLoadBuilder.move(getClient_id(), getGame_id(), start_pos, end_pos)
+        const move_payload = PayLoadBuilder.move(getPlayer_id(), getGame_id(), start_pos, end_pos)
         sendMessage(move_payload)
         return Promise.resolve()
 }

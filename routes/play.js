@@ -4,11 +4,14 @@ const middlewares = require('../middleware')
 
 router.get('/', middlewares.checkAuthenticated, (req, res) => {
     const username = req.user.username || null;
-    res.render("play", { name: username });
+    const player_id = req.user.player_id || null;
+    res.render("play", { name: username, player_id: player_id });
 })
 
 router.get('/game', (req, res) => {
-    res.render("game");
+    const username = req.user.username || "Player Name"
+    const current_rating = req.user.current_rating || "NaN"
+    res.render("game", {name: username, current_rating: current_rating});
 })
 
 module.exports = router;

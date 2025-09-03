@@ -1,9 +1,8 @@
-import { getClient_id, getGame_id, setGame_id, sendMessage } from '../websocket_communication/WebsocketClient.js';
+import { getPlayer_id, getGame_id, setGame_id, sendMessage } from '../websocket_communication/WebsocketClient.js';
 import { messageHandler } from '../websocket_communication/GameMessageHandler.js';
 import { game_state } from '../game_scripts/managers/BoardManager.js';
 import { PayLoadBuilder } from '../websocket_communication/PayLoadBuilder.js';
 
-console.log("test")
 const create_btn = document.getElementById('create-btn');
 const join_btn = document.getElementById('join-btn');
 const game_id_input = document.getElementById('game-id-input');
@@ -11,7 +10,7 @@ const game_id_input = document.getElementById('game-id-input');
 // Create game functionality
 create_btn.addEventListener('click', () => {
     console.log('Create Game button clicked');
-    const payload = PayLoadBuilder.create(getClient_id(), game_state, 10);
+    const payload = PayLoadBuilder.create(getPlayer_id(), game_state, 10);
     sendMessage(payload);
 });
 
@@ -32,7 +31,7 @@ join_btn.addEventListener('click', () => {
         return;
     }
 
-    const payload = PayLoadBuilder.join(getClient_id(), currentGameId)
+    const payload = PayLoadBuilder.join(getPlayer_id(), currentGameId)
     console.log(`Joining game with ID: ${currentGameId}`);
     sendMessage(payload);
 });

@@ -1,14 +1,14 @@
 /* Starts the game and stops it when needed
 preventing people from playing until its started */
 import { messageHandler } from "../../websocket_communication/GameMessageHandler.js";
-import { getClient_id } from "../../websocket_communication/WebsocketClient.js";
+import { getPlayer_id } from "../../websocket_communication/WebsocketClient.js";
 import { onClick, mouseDown } from "./PieceDraggingManager.js";
 import {timer} from "./UIManager.js";
 
 //On game Start
 messageHandler.on('start', (message) => {
     const {attacker, defender} = message
-    const client_id = getClient_id()
+    const client_id = getPlayer_id()
 
 
     

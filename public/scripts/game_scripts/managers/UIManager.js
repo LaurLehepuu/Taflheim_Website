@@ -1,5 +1,5 @@
 import { messageHandler } from "../../websocket_communication/GameMessageHandler.js";
-import { getClient_id } from "../../websocket_communication/WebsocketClient.js";
+import { getPlayer_id } from "../../websocket_communication/WebsocketClient.js";
 import { Timer } from "../utils/Timer.js";
 //Html Elements
     //Game over
@@ -16,14 +16,26 @@ import { Timer } from "../utils/Timer.js";
 //Other variables
 export const timer = new Timer();
 let role;
-const client_id = getClient_id()
+const client_id = getPlayer_id()
 
 messageHandler.on("move", (message) => {
     changeTurn();
     showPreviousMove(message.move_from, message.move_to);
 });
 
+//When you join a game with someone in it
+messageHandler.on('current_game_state', (message) => {
+    document.getElementById('opponent-name').innerText = message.opponent_username
+    document.getElementById('opponent-rating').innerText = message.opponent_rating
+})
 
+//When person joins
+messageHandler.on("join", (message) => {
+    document.getElementById('opponent-name').innerText = message.new_client
+    document.getElementById("opponent-rating").innerText = message.new_client_rating
+})
+
+//When game starts start UI timers and showcase active turn
 messageHandler.on("start", (message) => {
     if (message.attacker == client_id) {
         role = 'attacker'

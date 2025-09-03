@@ -1,5 +1,6 @@
 const db = require('mysql2')
 const dotenv = require('dotenv')
+const { v4: uuidv4 } = require('uuid');
 const { loginDbConfig } = require('../config/database_config')
 
 dotenv.config()
@@ -30,7 +31,8 @@ class LoginDatabase {
 
     async createUserWithProfile(email, hashed_password, username) {
         const connection = await this.pool.getConnection();
-    
+        const player_id = uuidv4()
+
         try {
         await connection.beginTransaction();
         
@@ -44,9 +46,9 @@ class LoginDatabase {
         
         //Add user to user_profiles
         await connection.execute(`
-            INSERT INTO user_profiles (email, user_id, username)
-            VALUES (?, ?, ?)
-            `,[email, user_id, username]
+            INSERT INTO user_profiles (email, user_id, player_id, username)
+            VALUES (?, ?, ?, ?)
+            `,[email, user_id, player_id, username]
         );
         
         await connection.commit();

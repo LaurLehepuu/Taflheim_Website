@@ -29,7 +29,6 @@ function initialize(passport) {
     passport.deserializeUser( async (id, done) => {
         try {
             const user = await login_db.getUserById(id)
-            console.log(user)
             done(null, user)
         } catch(error) {
             done(error)
