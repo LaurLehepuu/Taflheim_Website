@@ -29,7 +29,7 @@ class LoginDatabase {
         return rows.length > 0;
     }
 
-    async createUserWithProfile(email, hashed_password, username) {
+    async createUser(email, hashed_password, username) {
         const connection = await this.pool.getConnection();
         const player_id = uuidv4()
 
@@ -48,8 +48,13 @@ class LoginDatabase {
         await connection.execute(`
             INSERT INTO user_profiles (email, user_id, player_id, username)
             VALUES (?, ?, ?, ?)
-            `,[email, user_id, player_id, username]
-        );
+            `,[email, user_id, player_id, username]);
+
+        //add user into ratings
+        await connection.execute(`
+            INSERT INTO user_ratings (user_id)
+            VALUES (?)
+            `, [user_id]);
         
         await connection.commit();
         return { user: this.getUserProfile(user_id), success: true };

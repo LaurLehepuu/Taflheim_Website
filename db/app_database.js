@@ -10,6 +10,15 @@ class AppDatabase {
     constructor() {
         this.pool = db.createPool(appDbConfig).promise()
     }
+
+    async findRatingInfo(user_id) {
+        const [rating_info] = await this.pool.query(`
+            SELECT rating
+            FROM user_ratings
+            WHERE user_id = ?
+            `, [user_id])
+        return rating_info[0]
+    }
 }
 
 module.exports = new AppDatabase()

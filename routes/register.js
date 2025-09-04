@@ -72,7 +72,7 @@ router.post('/', middlewares.checkNotAuthenticated, async (req, res) => {
             // If all is good, hash password and add person to database
             const hashedPassword = await bcrypt.hash(password, 10);
             
-            await loginDb.createUserWithProfile(email, hashedPassword, username);
+            await loginDb.createUser(email, hashedPassword, username);
             
             // Success! Redirect to login with success message
             return res.redirect('/login?register=success');
@@ -87,8 +87,8 @@ router.post('/', middlewares.checkNotAuthenticated, async (req, res) => {
         });
         
     } catch (error) {
-        console.error('Registration error:', error);
-        console.error('Error stack:', error.stack);
+        logger.error('Registration error:', error);
+        logger.error('Error stack:', error.stack);
         
         // Determine which step to show on error
         const step = req.body.step == 2 ? 2 : 1;
