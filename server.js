@@ -4,22 +4,11 @@ const PORT = process.env.PORT || 3000;
 const passport = require('passport')
 const flash = require('express-flash')
 const session = require('express-session') 
-const winston = require('winston')
+
 
 const initializePassport = require('./config/passport_config')
 initializePassport(passport)
 
-//Create winston logger
-const winston_config = require('./config/winston_config')
-const logger = winston.createLogger({
-  level: 'info',
-  format: winston.format.combine(
-    winston.format.timestamp(),
-    winston.format.errors({ stack: true }),
-    winston.format.json()
-  ),
-  transports: basic_logger_transports
-});
 
 //#region Settings 
 app.set('views', __dirname + '/views');
