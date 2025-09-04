@@ -4,8 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server.js"
+    "start": "NODE_ENV=production node server.js",
+    "dev": "NODE_ENV=development nodemon server.js"
   },
   "keywords": [],
   "author": "",
@@ -24,6 +24,7 @@
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
     "uuid": "^11.1.0",
+    "winston": "^3.17.0",
     "ws": "^8.18.3"
   }
 }

@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const router = express.Router();
 const loginDb = require('../db/login_database')
 const middlewares = require('../middleware')
-
+const logger = require('../config/winston_config')
 router.use(express.urlencoded({ extended: false }))
 
 router.get('/', middlewares.checkNotAuthenticated, (req, res) => {
