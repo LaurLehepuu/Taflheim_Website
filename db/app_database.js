@@ -17,7 +17,7 @@ class AppDatabase {
             FROM user_ratings
             WHERE user_id = ?
             `, [user_id])
-        return rating_info[0]
+        return rating_info[0].rating
     }
 }
 

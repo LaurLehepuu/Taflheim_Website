@@ -26,13 +26,13 @@ messageHandler.on("move", (message) => {
 //When you join a game with someone in it
 messageHandler.on('current_game_state', (message) => {
     document.getElementById('opponent-name').innerText = message.opponent_username
-    document.getElementById('opponent-rating').innerText = message.opponent_rating
+    document.getElementById('opponent-rating').innerText = Math.round(message.opponent_rating)
 })
 
 //When person joins
 messageHandler.on("join", (message) => {
     document.getElementById('opponent-name').innerText = message.new_client
-    document.getElementById("opponent-rating").innerText = message.new_client_rating
+    document.getElementById("opponent-rating").innerText = Math.round(message.new_client_rating)
 })
 
 //When game starts start UI timers and showcase active turn

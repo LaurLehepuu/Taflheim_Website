@@ -7,7 +7,6 @@ function initialize(passport) {
     const authenticateUser = async ( email, password, done) => {
         try {
             const user = await login_db.getUserByEmail(email)
-            const user_ratings = await app_db.g
             if (!user) {
                 return done(null, false, { message: 'Incorrect password or email' })
             }
@@ -33,7 +32,7 @@ function initialize(passport) {
             //Find user object and add their rating to it
             const user = await login_db.getUserById(id)
             const user_rating = await app_db.findRatingInfo(id)
-            user.rating = user_rating.rating
+            user.rating = Math.round(user_rating)
 
             done(null, user)
         } catch(error) {
