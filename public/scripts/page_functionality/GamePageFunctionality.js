@@ -1,10 +1,10 @@
 const hide_button = document.getElementById("hide-btn")
 const back_button = document.getElementById("back-btn")
 const gameOverCard = document.getElementById('game-over-reason-card');
-
+const base_url = window.location.origin
 //Back Button functionality
 back_button.addEventListener('click', () => {
-        window.location.replace('http://localhost:3000/play')
+        window.location.replace(`${base_url}/play`)
 })
 
 //Hide button functionality

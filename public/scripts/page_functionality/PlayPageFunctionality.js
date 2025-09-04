@@ -6,6 +6,9 @@ import { PayLoadBuilder } from '../websocket_communication/PayLoadBuilder.js';
 const create_btn = document.getElementById('create-btn');
 const join_btn = document.getElementById('join-btn');
 const game_id_input = document.getElementById('game-id-input');
+const copy_btn = document.getElementById('copy-btn')
+const discord_btns = document.querySelectorAll('.discord-btn')
+const base_url = window.location.origin
 
 // Create game functionality
 create_btn.addEventListener('click', () => {
@@ -40,5 +43,25 @@ join_btn.addEventListener('click', () => {
 messageHandler.on('join', (message) => {
     console.log(`Recieved message: ${message}`)
     setGame_id(message.game.id);
-    window.location.replace('http://localhost:3000/play/game')
+    window.location.replace(`${base_url}/play/game`)
 });
+
+//Copy button functionality
+copy_btn.addEventListener('click', () => {
+    var copyText = document.getElementById("game-id-input");
+
+  // Select the text field
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); // For mobile devices
+
+  // Copy the text inside the text field
+  navigator.clipboard.writeText(copyText.value);
+})
+
+
+//Setup discord buttons to redirect to an invite
+discord_btns.forEach(button => {
+    button.addEventListener('click', () => {
+      open('https://discord.gg/yVGsEjmqAv')  
+    })
+})
